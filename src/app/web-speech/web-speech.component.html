@@ -29,3 +29,8 @@
     <textarea matInput [value]="totalTranscript || ''" placeholder="Speech Input Result" rows="15" disabled="true"></textarea>
   </mat-form-field>
 </section>
+<section>
+  <ckeditor
+  [(ngModel)]="totalTranscript"
+  ></ckeditor>
+</section>

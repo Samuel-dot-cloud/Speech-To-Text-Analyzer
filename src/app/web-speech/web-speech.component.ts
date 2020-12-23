@@ -24,19 +24,21 @@ export class WebSpeechComponent implements OnInit {
   errorMessage$?: Observable<string>;
   defaultError$ = new Subject<string | undefined>();
 
+
   constructor(
     private speechRecognizer: SpeechRecognizerService,
     private actionContext: ActionContext
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     const webSpeechReady = this.speechRecognizer.initialize(this.currentLanguage);
     if (webSpeechReady) {
       this.initRecognition();
-    }else {
+    } else {
       this.errorMessage$ = of('Your Browser is not supported. Please try Google Chrome.');
     }
   }
+
 
   start(): void {
     if (this.speechRecognizer.isListening) {
@@ -116,4 +118,5 @@ export class WebSpeechComponent implements OnInit {
         : notification.content;
     }
   }
+
 }
